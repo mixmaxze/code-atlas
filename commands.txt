@@ -1,0 +1,5 @@
+ollama pull phi3
+
+export GROQ_API_KEY="sua_chave"
+
+setx GROQ_API_KEY "sua_chave"
