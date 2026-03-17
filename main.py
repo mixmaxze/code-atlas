@@ -5,7 +5,7 @@ from rag.chunker import chunk_files
 from embeddings.embedding_index import CodeEmbeddingIndex
 from rag.code_rag import CodeRAG
 
-repo_url = "https://github.com/keycloak/keycloak"
+repo_url = "https://github.com/argoproj/argo-cd"
 
 index_dir = "vector_indexes"
 os.makedirs(index_dir, exist_ok=True)
@@ -40,7 +40,7 @@ else:
 
 rag = CodeRAG(index)
 
-question = "Como eu executo a principal funcionalidade deste código?"
+question = "O quão acoplado estão as classes deste projeto?"
 
 answer = rag.ask(question)
 
