@@ -5,12 +5,16 @@ from rag.chunker import chunk_files
 from embeddings.embedding_index import CodeEmbeddingIndex
 from rag.code_rag import CodeRAG
 
-repo_url = "https://github.com/i-voted-for-trump/is-even"
+repo_url = "https://github.com/keycloak/keycloak"
 
-index_path = "vector_index.pkl"
+index_dir = "vector_indexes"
+os.makedirs(index_dir, exist_ok=True)
+index_path = os.path.join(
+    index_dir,
+    f"{repo_url.split('.com/')[-1].replace('/', '-')}.pkl"
+)
 
 index = CodeEmbeddingIndex()
-
 # se índice já existir → carregar
 if os.path.exists(index_path):
 
@@ -36,7 +40,7 @@ else:
 
 rag = CodeRAG(index)
 
-question = "What is the main purpose of this library?"
+question = "Como eu executo a principal funcionalidade deste código?"
 
 answer = rag.ask(question)
 
